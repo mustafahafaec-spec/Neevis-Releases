@@ -1,6 +1,6 @@
 # Neevis
 
-**Neevis** is a productivity add-in for Autodesk Navisworks Manage 2026 and 2027. The add-in brings clash-management, saved-viewpoint, reporting, model-finding, and geometry-export.
+**Neevis** is a productivity add-in for Autodesk Navisworks Manage 2026 and 2027. The add-in brings clash-management, saved-viewpoint, reporting, model-finding, and geometry-export workflows into one organized Navisworks ribbon.
 
 ## Main Tools
 
@@ -12,9 +12,8 @@
 - **Matrix to Tests** creates clash tests from an Excel matrix.
 - **Results Matrix** exports clash-result matrices for review and coordination.
 - **By Revit ID** locates model objects using Revit Element IDs.
-- **About and appearance controls** provide product information and centralized light/dark theme selection.
-
-
+- **Clash Grouper** Select and group clashes from multiple clash tests based on various user defined criterias. 
+- **About and appearance controls** provide product information, licensing, Updating and centralized light/dark theme selection.
 ## Compatibility
 
 - Autodesk Navisworks Manage 2026
