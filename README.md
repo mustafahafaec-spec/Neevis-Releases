@@ -5,7 +5,7 @@
 ## Main Tools
 
 - **Viewpoint Manager** organizes saved viewpoints, supports comments and Navisworks text markups, erases markups, exports and updates Excel reports with images, and exchanges viewpoint XML files.
-- **NaviSolid** exports selected Navisworks geometry to DWG or IFC4 and transfers geometry to an opened AutoCAD drawing. A configurable faceting factor balances geometry detail and performance.
+- **NaviSolid(Beta)** exports selected Navisworks geometry to DWG or IFC4 and transfers geometry to an opened AutoCAD drawing. A configurable faceting factor balances geometry detail and performance.
 - **Clash Reporter** creates configurable clash reports with selectable fields, statuses, comments, and images.
 - **Clashes Data Transfer** exports and imports clash metadata between Navisworks files.
 - **Tests Editor** exports clash-test settings to Excel and applies controlled edits back to Navisworks.
