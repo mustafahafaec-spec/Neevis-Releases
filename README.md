@@ -1,80 +1,82 @@
-# Neevis (Latest Version v1.9.3)
+# Neevis (Latest Version v1.9.4)
 
 **Neevis** is a productivity add-in for Autodesk Navisworks Manage 2026 and 2027. It provides Workspace-based clash analysis, Search Set authoring, clash-management and review workflows, reporting, saved-viewpoint tools, model-finding utilities, geometry export, hotkeys, and coordination tools.
 
-> **BETA tools/features:** Search Set Builder, Workspace, Clashes Data Transfer, Right Click Options, and Clash Reporter Create View Points remain under wider testing.
+> **BETA tools/features:** Search Set Builder, Workspace, Clashes Data Transfer, Right Click Options, and the Viewpoints portion of Sync Data remain under wider testing.
 >
-> **Coming Soon:** Stamper and Clash Reporter image export are **ALPHA** and are not executable in the v1.9.3 Public Release.
+> **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.4 Public Release.
 
 ## Main Tools
 
 ### Tests and Sets
 
 - **Matrix to Tests** creates clash tests from an Excel matrix.
-- **Tests Editor** exports clash-test settings to Excel and applies controlled edits back to Navisworks. v1.9.3 adds editable YES/NO columns for supported Clash Detective rule states and includes those values in Excel import/export. See **Known Issues** for current custom-rule limitations.
+- **Tests Editor** exports clash-test settings to Excel and applies controlled edits back to Navisworks. Supported built-in and discoverable custom Clash Detective rule states are available as editable YES/NO columns and participate in Excel import/export and Workspace verification/transfer when the current Navisworks model supports those rules.
 - **Search Set Builder (BETA)** creates, edits, arranges, imports, exports, and synchronizes Navisworks Search Sets. It supports folders, condition editing, AND/OR/NOT logic, undo/redo, model-derived Property Set/Property/Value helpers, Selection Tree assignment, and Excel workflows.
 
 ### Workspace and Analyzer
 
-- **Workspace (BETA)** provides the shared Neevis Workspace used by Workspace-aware tools. It supports Workspace creation/loading, verification, synchronization, screening, export, shared settings, Workspace appearance behavior, Analyzer Records, cache-file awareness, staged Model/Workspace verification repair, and supported Clash Test rule-state verification/transfer.
+- **Workspace (BETA)** provides the shared Neevis Workspace used by Workspace-aware tools. The central Workspace is a single portable **`.nws`** file with independently compressed and revisioned data sections. Existing **`.nat`** Workspaces can be converted to `.nws` without modifying the original `.nat` file.
+- Workspace stores coordination definitions, shared settings, Analyzer records, cache-file update information, per-test clash records, clash metadata/group membership, source-file relationships, synchronized Viewpoints, and supporting cross-host element identity when available.
+- **Workspace Tests Update Rules** determine when a Workspace-aware Clash Test requires rerunning: reset/not-run state, a recorded live-clash-count mismatch, or a relevant cache update newer than the test's last run.
 - **Analyzer** provides Workspace-based clash analysis with Items, Groups, Combo Groups, Main Groups, recorded clash history, Clash Summary, Clashes Table, **Clashes Matrix**, Priority Items, Clashes Timeline, reporting, and model isolation.
+- Analyzer updates only Workspace tests that currently require an update. Before running them, Neevis unhides the Search Set content associated with the affected Workspace Items, runs the required tests, restores the prior hidden state, and refreshes only the affected Workspace clash records.
 - Analyzer **General settings are local per user/machine**. Workspace-specific definitions and records remain Workspace data.
 - Analyzer isolation follows the statuses selected under **Statuses included in Total**; clashes moved to excluded statuses are removed from the active isolated clash view.
-- **Priority Items** appears before Clashes Timeline. Right-clicking an individual stacked-bar segment exposes the standard Analyzer actions for that clicked Item/counterpart scope.
 - **Universal Clash Capture Settings** controls clash-isolation/capture appearance consistently across supported Neevis workflows.
 - **Viewpoint Manager** organizes saved viewpoints, supports comments and Navisworks text markups, exports and updates Excel reports with images, and exchanges viewpoint XML files.
 
-### Clash Coordination
+### Centralization and Clash Coordination
 
-- **Clashes Data Transfer (BETA)** exchanges selected clash metadata between the model and Workspace and supports manual/automatic synchronization using configured Clash Tests, statuses, groups, and data fields. In v1.9.3 PATCH1, Status is mandatory transfer data for enabled Reviewed/Approved/Resolved statuses; selected statuses override New/Active, selected-status conflicts use the newer change time, and ordinary fields use non-empty-first then newer-change-time matching. Signals notify Automatic Sync when shared data should be reconciled.
+- **Sync Data** is the explicit central synchronization workflow. It saves the current NWF first, performs Workspace verification, then synchronizes the data types selected by the user. The user's selections are remembered for the next Sync Data session.
+- Sync Data presents independent progress stages for **Saving the current file**, **Workspace verification**, and each selected data channel so every stage progresses on its own 0–100% scale.
+- **Clashes Data Transfer (BETA)** exchanges selected clash metadata between the model and Workspace. Reviewed and Approved are the synchronized review-status scope; metadata fields include Priority, Description, Comments, Assigned To, and Approved By. Central reconciliation remains field-aware and change-driven.
+- **Clash Groups** is an independent, setting-free Sync Data channel. Group membership is synchronized separately from clash metadata/status and is independent of clash review status.
+- **Sync Data – Viewpoints (BETA)** synchronizes Workspace Saved Viewpoints, folders, and supported saved visibility/appearance attributes between verified models. Native Navisworks Viewpoints XML is used as the normal camera/tree transfer path, while Neevis preserves the synchronized camera when receiver-side saved attributes must be recaptured.
 - **Clash Grouper** groups clashes using user-defined grouping criteria with optimized startup/property discovery for larger coordination models.
 - **Right Click Options (BETA)** adds Neevis actions to the Navisworks selection context menu, including clash isolation, grouping/report access, review/approve related clashes, IFC export, and view reset actions.
+
+### File and Model Utilities
+
+- **File Manager** lists loaded Navisworks cache/model files with source information, paths, and update dates, and supports multi-selection removal/repath-related workflows.
+- **Purger** removes selected categories of saved Navisworks model data.
+- **Get Revit ID** copies Revit Element IDs from selected Navisworks objects.
+- **By Revit ID** locates model objects using Revit Element IDs.
+- **Hotkeys** assigns two-key shortcuts to Neevis tools and supported native Navisworks commands. Hotkeys are suppressed while Navisworks Sets/Search Sets/Selection Sets owns keyboard focus so native folder renaming does not trigger Neevis commands.
 
 ### Exporting and Reporting
 
 - **Results Count** exports clash-result counts as a table or as a Search Set matrix.
-- **Clash Reporter** creates configurable HTML clash reports with selectable fields, statuses, comments, grouping, filters, and split-report options. **Create View Points remains BETA** and its loading process can be cancelled safely.
-- **Clash Reporter image export is ALPHA / Coming Soon** and is unavailable in the Public Release.
+- **Reporter** creates configurable HTML clash reports with selectable fields, statuses, comments, grouping, filters, and split-report options. **Create View Points is ALPHA / Coming Soon** and is unavailable in the Public Release.
+- **Reporter image export is ALPHA / Coming Soon** and is unavailable in the Public Release.
 - **NaviSolid** exports selected Navisworks geometry to DWG and transfers geometry to an opened AutoCAD drawing.
 - **IFC Export** exports Navisworks geometry to IFC4. The main workflow lets the user choose export content from the Selection Tree, while the Right Click Options shortcut exports the current selection directly.
 
-### Utility Tools
+### Settings and Updates
 
-- **Get Revit ID** copies Revit Element IDs from selected Navisworks objects.
-- **By Revit ID** locates model objects using Revit Element IDs.
-- **Hotkeys** assigns two-key shortcuts to Neevis tools and supported native Navisworks commands. Hotkeys are suppressed while Navisworks Sets/Search Sets/Selection Sets owns keyboard focus so native folder renaming does not trigger Neevis commands.
 - **About** provides version, appearance, licensing, update controls, Auto Update, update-notification preferences, Universal Clash Capture Settings, and bug/suggestion reporting.
+- Neevis settings can be exported and loaded from About for supported tools, allowing user preferences to be transferred between installations.
 
 ### Coming Soon
 
-- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.3 Public Release.
-- **Clash Reporter Images (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
+- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.4 Public Release.
+- **Reporter Create View Points (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
+- **Reporter Images (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
 
-## v1.9.3 PATCH1
+## v1.9.4 Highlights
 
-- Reworks **Clashes Data Transfer (BETA)** Automatic Sync into field-level matching rather than whole-clash last-change-wins.
-- Removes **Status** from optional Data Fields; Status is always transferred for enabled Reviewed/Approved/Resolved status scope.
-- A synchronized Reviewed/Approved/Resolved status always overrides New/Active. Conflicts between synchronized statuses use the newer status-change signal time.
-- For other synchronized fields, a populated value always overrides an empty value; when both sides contain values, the newer field-change signal time wins.
-- Unchecked Reviewed/Approved/Resolved statuses pause synchronization for those states on that model without erasing the shared Workspace state.
-- Manual Model → Workspace synchronization now writes through the same field-level signal/conflict engine, so it follows the same status and data-field rules and directly notifies Automatic Sync models.
-
-## v1.9.3 Highlights
-
-- Adds supported Clash Detective rule-state columns to Tests Editor with YES/NO editing and Excel round-trip support.
-- Adds supported Clash Test rule-state verification and Model ↔ Workspace transfer to Workspace Verification.
-- Adds Analyzer context actions directly to Priority Items stacked-bar segments and moves Priority Items before Clashes Timeline.
-- Makes Clashes Data Transfer Automatic Sync apply pending Workspace-side changes back into the model automatically.
-- Reduces Analyzer opening delay and Workspace Clash Test definition-reading overhead.
-- Fixes Priority Items context-menu host instability and improves Clashes Matrix toolbar/merged-label rendering.
-- Extends Hotkey suppression to native Sets/Search Sets/Selection Sets keyboard focus.
+- Introduces the single-file **`.nws` Workspace** with automatic legacy `.nat` conversion and sectioned central storage for scalable Workspace data.
+- Adds the explicit **Sync Data** workflow for Clashes Data, Clash Groups, and Saved Viewpoints with save-first verification, remembered selections, and independent stage progress.
+- Adds persistent Workspace clash/cache records and Workspace Tests Update Rules so Workspace-aware reruns are based on authoritative cache/test state rather than generic Navisworks update flags.
+- Adds **File Manager** and expands Workspace-aware model/cache management.
+- Improves Tests Editor and Workspace support for discoverable custom Clash Detective rules and supported built-in rule states.
+- Improves Analyzer opening and Workspace-aware test-update performance, including targeted test execution and targeted clash-record refresh.
+- Improves central-server responsiveness by reducing unnecessary Workspace polling and repeated full-model/full-project scans.
+- Improves Viewpoint synchronization camera/focal-point preservation and uses native Viewpoints XML for the normal transfer path.
 
 ## Known Issues
 
-1. **Tests Editor:** Custom-made Clash Detective rules do not appear in the Tests Editor table.
-2. **Workspace Verification (BETA):** Custom-made Clash Detective rule states do not affect Workspace verification.
-3. **Workspace Verification (BETA):** The preset rule **Items with Coincident snap points** does not affect Workspace verification.
-4. **Workspace (BETA):** The preset rule **Items with Coincident snap points** is not transferred from Model to Workspace or from Workspace to Model.
+1. **Sync Data – Viewpoints (BETA):** Saved Viewpoints containing saved visibility/appearance attributes can still take significantly longer to synchronize and may cause noticeable latency on large models.
 
 ## Compatibility
 
@@ -90,17 +92,18 @@
 - **Workspace — BETA**
 - **Clashes Data Transfer — BETA**
 - **Right Click Options — BETA**
-- **Clash Reporter Create View Points — BETA**
+- **Sync Data Viewpoints — BETA**
+- **Reporter Create View Points — ALPHA / Coming Soon**
 - **Stamper — ALPHA / Coming Soon**
-- **Clash Reporter Images — ALPHA / Coming Soon**
+- **Reporter Images — ALPHA / Coming Soon**
 
 ## Future Plans
 
-- Continue stabilization of Tests Editor custom clash-rule discovery and Workspace rule-state verification/transfer coverage.
+- Continue validation and performance work for BETA Saved Viewpoint synchronization on large federated models.
 - Continue validation of BETA workflows based on project use and tester feedback.
 - Continue Stamper development before enabling it in a future Public Release.
-- Continue development of Clash Reporter image export before enabling it in a future Public Release.
-- Expand Analyzer, Workspace, reporting, and coordination workflows.
+- Continue development of Reporter Create View Points and image export before enabling them in a future Public Release.
+- Expand Workspace-based interoperability with Reeviz and other coordination workflows.
 
 ## Author
 
