@@ -1,10 +1,10 @@
-# Neevis (Latest Version v1.9.4)
+# Neevis (Latest Version v1.9.5)
 
 **Neevis** is a productivity add-in for Autodesk Navisworks Manage 2026 and 2027. It provides Workspace-based clash analysis, Search Set authoring, clash-management and review workflows, reporting, saved-viewpoint tools, model-finding utilities, geometry export, hotkeys, and coordination tools.
 
 > **BETA tools/features:** Search Set Builder, Workspace, Clashes Data Transfer, Right Click Options, and the Viewpoints portion of Sync Data remain under wider testing.
 >
-> **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.4 Public Release.
+> **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.5 Public Release.
 
 ## Main Tools
 
@@ -17,8 +17,9 @@
 ### Workspace and Analyzer
 
 - **Workspace (BETA)** provides the shared Neevis Workspace used by Workspace-aware tools. The central Workspace is a single portable **`.nws`** file with independently compressed and revisioned data sections. Existing **`.nat`** Workspaces can be converted to `.nws` without modifying the original `.nat` file.
-- Workspace stores coordination definitions, shared settings, Analyzer records, cache-file update information, per-test clash records, clash metadata/group membership, source-file relationships, synchronized Viewpoints, and supporting cross-host element identity when available.
+- Workspace stores coordination definitions, shared settings, Analyzer records, cache-file update information, per-test clash records, clash metadata/group membership, source-file relationships, synchronized Viewpoints, and supporting cross-host identity. Clash snapshots also retain clash-side **Document > Title** ownership metadata and Analyzer **Last Recorded Current Clash Count** values for supported test/group aggregate levels so Reeviz and other consumers can use Neevis-authored coordination state directly.
 - **Workspace Tests Update Rules** determine when a Workspace-aware Clash Test requires rerunning: reset/not-run state, a recorded live-clash-count mismatch, or a relevant cache update newer than the test's last run.
+- Opening Workspace-aware tools no longer waits for a monolithic verification pass. Fresh verification proceeds cooperatively in the Navisworks host context after the tool opens, while explicit **Sync Data** and manual **Verify** remain synchronous authoritative boundaries.
 - **Analyzer** provides Workspace-based clash analysis with Items, Groups, Combo Groups, Main Groups, recorded clash history, Clash Summary, Clashes Table, **Clashes Matrix**, Priority Items, Clashes Timeline, reporting, and model isolation.
 - Analyzer updates only Workspace tests that currently require an update. Before running them, Neevis unhides the Search Set content associated with the affected Workspace Items, runs the required tests, restores the prior hidden state, and refreshes only the affected Workspace clash records.
 - Analyzer **General settings are local per user/machine**. Workspace-specific definitions and records remain Workspace data.
@@ -28,8 +29,9 @@
 
 ### Centralization and Clash Coordination
 
-- **Sync Data** is the explicit central synchronization workflow. It saves the current NWF first, performs Workspace verification, then synchronizes the data types selected by the user. The user's selections are remembered for the next Sync Data session.
-- Sync Data presents independent progress stages for **Saving the current file**, **Workspace verification**, and each selected data channel so every stage progresses on its own 0–100% scale.
+- **Sync Data** is the explicit central synchronization workflow. It saves the current NWF first, performs authoritative Workspace verification, then synchronizes the data types selected by the user. The user's selections are remembered for the next Sync Data session.
+- Sync Data uses persistent per-test change tracking and Workspace change journals so Clash Data, Clash Groups, and the authoritative Workspace clash repository process only the affected Clash Tests when the synchronization state is known. Full safety passes remain available for missing/migrated state, journal gaps, or other cases where the delta scope cannot be proven safely.
+- Sync Data presents independent progress stages for **Saving the current file**, **Workspace verification**, and each selected data channel, and shows the total elapsed synchronization time while the operation is running.
 - **Clashes Data Transfer (BETA)** exchanges selected clash metadata between the model and Workspace. Reviewed and Approved are the synchronized review-status scope; metadata fields include Priority, Description, Comments, Assigned To, and Approved By. Central reconciliation remains field-aware and change-driven.
 - **Clash Groups** is an independent, setting-free Sync Data channel. Group membership is synchronized separately from clash metadata/status and is independent of clash review status.
 - **Sync Data – Viewpoints (BETA)** synchronizes Workspace Saved Viewpoints, folders, and supported saved visibility/appearance attributes between verified models. Native Navisworks Viewpoints XML is used as the normal camera/tree transfer path, while Neevis preserves the synchronized camera when receiver-side saved attributes must be recaptured.
@@ -59,20 +61,18 @@
 
 ### Coming Soon
 
-- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.4 Public Release.
+- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.5 Public Release.
 - **Reporter Create View Points (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
 - **Reporter Images (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
 
-## v1.9.4 Highlights
+## v1.9.5 Highlights
 
-- Introduces the single-file **`.nws` Workspace** with automatic legacy `.nat` conversion and sectioned central storage for scalable Workspace data.
-- Adds the explicit **Sync Data** workflow for Clashes Data, Clash Groups, and Saved Viewpoints with save-first verification, remembered selections, and independent stage progress.
-- Adds persistent Workspace clash/cache records and Workspace Tests Update Rules so Workspace-aware reruns are based on authoritative cache/test state rather than generic Navisworks update flags.
-- Adds **File Manager** and expands Workspace-aware model/cache management.
-- Improves Tests Editor and Workspace support for discoverable custom Clash Detective rules and supported built-in rule states.
-- Improves Analyzer opening and Workspace-aware test-update performance, including targeted test execution and targeted clash-record refresh.
-- Improves central-server responsiveness by reducing unnecessary Workspace polling and repeated full-model/full-project scans.
-- Improves Viewpoint synchronization camera/focal-point preservation and uses native Viewpoints XML for the normal transfer path.
+- Makes **Sync Data change-driven end to end** for Clash Data, Clash Groups, and Workspace clash indexing when a valid delta baseline exists, avoiding repeated full-test/full-clash processing on unchanged models.
+- Reuses the fresh Workspace verification catalog during synchronization so changed-test indexing does not re-walk every configured Clash Test; unchanged cache ledgers also skip per-test cache-generation scans.
+- Adds a visible **elapsed synchronization timer** to Sync Data.
+- Keeps Workspace-aware tools responsive while fresh verification progresses cooperatively, while preserving authoritative synchronous verification for Sync Data and manual Verify.
+- Extends the `.nws` cross-host clash snapshot with clash-side **Document > Title** ownership metadata and persisted Analyzer **Last Recorded Current Clash Count** aggregates for direct Reeviz consumption.
+- Preserves safety fallbacks: missing/migrated baselines, journal gaps, cache-ledger changes, or unscopable native changes can still trigger the required authoritative full pass.
 
 ## Known Issues
 
