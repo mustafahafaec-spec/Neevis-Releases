@@ -1,10 +1,10 @@
-# Neevis (Latest Version v1.9.6)
+# Neevis (Latest Version v1.9.7)
 
 **Neevis** is a productivity add-in for Autodesk Navisworks Manage 2026 and 2027. It provides Workspace-based clash analysis, Search Set authoring, clash-management and review workflows, reporting, saved-viewpoint tools, model-finding utilities, geometry export, hotkeys, and coordination tools.
 
 > **BETA tools/features:** Search Set Builder, Workspace, Clashes Data Transfer, Right Click Options, and the Viewpoints portion of Sync Data remain under wider testing.
 >
-> **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.6 Public Release.
+> **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.7 Public Release.
 
 ## Main Tools
 
@@ -63,25 +63,24 @@
 
 ### Coming Soon
 
-- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.6 Public Release.
+- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.7 Public Release.
 - **Reporter Create View Points (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
 - **Reporter Images (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
 
-## v1.9.6 Highlights
+## v1.9.7 Highlights
 
-- Reworks `.nws` Workspace access around cached manifests, batched section reads, and section-only writes so frequent Workspace operations avoid repeatedly loading or rewriting unrelated data.
-- Refines Sync Data change scope from broad test-level fallbacks toward exact test/clash/journal deltas across Clash Data, Clash Groups, and Workspace clash indexing, including direct payload-to-repository patching where the mapping is proven safe.
-- Keeps Sync Data lease waits identifiable by showing the Autodesk user and machine currently synchronizing the Workspace.
-- Fixes cooperative Workspace verification state publication so open Workspace UI no longer remains on **Verifying in background...** after a successful background pass.
-- Changes Analyzer Record so it never silently launches Clash Test updates; outdated relevant tests must be updated explicitly before a recording can be saved.
-- Changes Analyzer Clashes Table **Difference** to compare the latest two records when available, or the only saved record against the current reading.
-- Restores Reporter Level/Grid filter discovery across available Navisworks grid systems when the active grid system is unavailable or unsuitable.
-- Retains the Sync Data elapsed timer and responsive progress-window behavior introduced during the v1.9.6 development cycle.
+- Adds an **Only Updated Tests** Sync Data run mode that synchronizes only relevant Clash Tests already considered current, without running or updating tests during that mode.
+- Extends Workspace cross-host Item metadata with **Main Documents**, using unique `Document > Title` values across Item elements and falling back to `Item > Source File` where required.
+- Strengthens Clash Groups synchronization so central group membership remains authoritative across group moves and Clash Test reset/rerun recovery, while keeping the group channel separate from clash review metadata.
+- Improves Sync Data review/status handling for Navisworks test states reported as either **Done** or **Complete**, and tightens Reviewed/Approved transfer targeting.
+- Prevents broad Clash Group recovery candidates from automatically forcing full Workspace clash indexing; repository refresh is now limited to tests with actual group-membership consequences.
+- Retains the section-level `.nws` I/O and delta-tracking architecture while continuing performance and synchronization reliability work for large coordination Workspaces.
 
 ## Known Issues
 
-1. **Sync Data performance:** Large or structurally changed Workspaces can still require conservative Navisworks reconciliation. The v1.9.6 delta and `.nws` I/O changes substantially reduce unnecessary broad work paths, but very large-model performance remains under real-project validation.
-2. **Sync Data – Viewpoints (BETA):** Saved Viewpoints containing saved visibility/appearance attributes can still take significantly longer to synchronize and may cause noticeable latency on large models.
+1. **Sync Data reliability:** Synchronization is still not fully reliable, and multiple Workspace data types may fail to transfer between models/users as expected. This is a known issue and will be addressed in an upcoming public patch release.
+2. **Sync Data performance:** Large or structurally changed Workspaces can still require conservative Navisworks reconciliation, so very large-model synchronization performance remains under real-project validation.
+3. **Sync Data – Viewpoints (BETA):** Saved Viewpoints containing saved visibility/appearance attributes can still take significantly longer to synchronize and may cause noticeable latency on large models.
 
 ## Compatibility
 
@@ -104,6 +103,7 @@
 
 ## Future Plans
 
+- Resolve the remaining Sync Data transfer-reliability issues in an upcoming public patch release.
 - Continue validation and performance work for BETA Saved Viewpoint synchronization on large federated models.
 - Continue validation of BETA workflows based on project use and tester feedback.
 - Continue Stamper development before enabling it in a future Public Release.
