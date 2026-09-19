@@ -222,7 +222,7 @@ Shows Neevis version and product information and provides access to supported se
 
 # Additional Neevis Features
 
-## Right Click Options — BETA
+## Right Click Options
 Adds Neevis actions to the Navisworks selection context menu.
 
 Depending on the selected objects and workflow, actions can include clash isolation, review/approval operations, grouping/report access, IFC export, and view reset commands.
@@ -239,7 +239,6 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 | Feature | Status |
 | --- | --- |
 | Search Set Builder | BETA |
-| Clashes Data Transfer | BETA |
 | Volume Screen | BETA |
 | Stamper | ALPHA / Coming Soon |
 | Reporter Images | ALPHA / Coming Soon |
