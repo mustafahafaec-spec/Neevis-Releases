@@ -1,10 +1,10 @@
-# Neevis (Latest Version v1.9.8)
+# Neevis (Latest Version v1.9.9)
 
 **Neevis** is a productivity add-in for Autodesk Navisworks Manage 2026 and 2027. It provides Workspace-based clash analysis, Search Set authoring, clash-management and review workflows, reporting, saved-viewpoint tools, model-finding utilities, geometry export, hotkeys, and coordination tools.
 
 > **BETA tools/features:** Search Set Builder, Clashes Data Transfer, and Right Click Options remain under wider testing.
 >
-> **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.8 Public Release.
+> **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.9 Public Release.
 
 ## Main Tools
 
@@ -53,6 +53,7 @@
 - **Reporter image export is ALPHA / Coming Soon** and is unavailable in the Public Release.
 - **NaviSolid** exports selected Navisworks geometry to DWG and transfers geometry to an opened AutoCAD drawing.
 - **IFC Export** exports Navisworks geometry to IFC4. The main workflow lets the user choose export content from the Selection Tree, while the Right Click Options shortcut exports the current selection directly.
+- **Reeviz Portal** connects Neevis/Navisworks to Reeviz in Revit. It receives the active Revit section box, shows a loading window while geometry is processed, excludes the originating Revit model from return sources, and returns intersecting Navisworks geometry/source information for Revit transfer.
 
 ### Settings and Updates
 
@@ -61,9 +62,15 @@
 
 ### Coming Soon
 
-- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.8 Public Release.
+- **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.9 Public Release.
 - **Reporter Create View Points (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
 - **Reporter Images (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
+
+## v1.9.9 Highlights
+
+- Adds the public **Reeviz Portal** workflow for live Reeviz/Neevis section-box geometry exchange and loading feedback during Portal processing.
+- Uses the refreshed Reporter printer artwork in the ribbon and Reporter identity/header UI.
+- Carries the v1.9.9 Workspace/Analyzer/coordination refinements developed after v1.9.8 while preserving the existing public lifecycle gates for ALPHA/Coming Soon features.
 
 ## v1.9.8 Highlights
 
