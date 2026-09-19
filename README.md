@@ -3,7 +3,7 @@
 **Neevis** is a productivity add-in for Autodesk Navisworks Manage 2026 and 2027. It provides Workspace-based clash analysis, Search Set authoring, clash-management and review workflows, reporting, saved-viewpoint tools, model-finding utilities, geometry export, hotkeys, and coordination tools.
 
 > **BETA tools/features:** Search Set Builder, Clashes Data Transfer, and Right Click Options remain under wider testing.
->
+
 > **Coming Soon:** Stamper, Reporter Create View Points, and Reporter image export are **ALPHA** and are not executable in the v1.9.9 Public Release.
 
 ## Main Tools
@@ -16,7 +16,7 @@
 
 ### Workspace and Analyzer
 
-- **Workspace** provides the shared Neevis Workspace used by Workspace-aware tools. The central Workspace is a single portable **`.nws`** file with independently compressed and revisioned data sections. Existing **`.nat`** Workspaces can be converted to `.nws` without modifying the original `.nat` file.
+- **Workspace** provides the shared Neevis Workspace used by Workspace-aware tools. The central Workspace is a single portable **`.nws`** file with independently compressed and revisioned data sections.
 - Workspace stores coordination definitions, shared settings, Analyzer records, cache-file update information, per-test clash records, clash metadata/group membership, source-file relationships, synchronized Viewpoints, and supporting cross-host identity.
 - Workspace includes direct **Reset and Update Tests**, **Delete Non-Workspace Tests**, and **Clear Workspace Data** actions. Screened Workspace tests are protected from the non-Workspace deletion action.
 - **Workspace Verification** compares model and Workspace definitions and provides detailed selected-error differences for Search Set conditions, Clash Test definitions, assignments, and related Workspace data.
@@ -63,28 +63,7 @@
 ### Coming Soon
 
 - **Stamper (ALPHA)** remains visible as an under-development tool but does not execute in the v1.9.9 Public Release.
-- **Reporter Create View Points (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
 - **Reporter Images (ALPHA)** remains visible as Coming Soon and does not execute in the Public Release.
-
-## v1.9.9 Highlights
-
-- Adds the public **Reeviz Portal** workflow for live Reeviz/Neevis section-box geometry exchange and loading feedback during Portal processing.
-- Uses the refreshed Reporter printer artwork in the ribbon and Reporter identity/header UI.
-- Carries the v1.9.9 Workspace/Analyzer/coordination refinements developed after v1.9.8 while preserving the existing public lifecycle gates for ALPHA/Coming Soon features.
-
-## v1.9.8 Highlights
-
-- Promotes **Workspace** and **Sync Data Viewpoints** out of BETA designation for this Public Release.
-- Adds **Sync All / Sync Specific** with remembered Main Group scope for targeted Clash Test updating, Clashes Data, and Clash Groups synchronization.
-- Adds Workspace **Data** actions for resetting/updating tests, deleting proven non-Workspace tests, and clearing runtime Workspace data while preserving Workspace setup.
-- Significantly improves Test Editor Excel import/apply performance for large Clash Test catalogs and avoids unnecessary reruns of unchanged Workspace Clash Tests.
-- Strengthens Saved Viewpoint synchronization with native XML camera/tree transfer, duplicate-name support, stale-deletion protection, duplicate-GUID safety, saved-attribute recovery, and full camera/frustum preservation.
-- Improves Clash Data and Clash Group synchronization performance with indexed/batched incoming group moves while retaining conservative fallback verification.
-- Adds detailed Workspace Verification comparison information and improves several Workspace/Analyzer interaction and appearance workflows.
-
-## Known Issues
-
-1. **Clashes Data synchronization performance:** very large clash datasets can still take several minutes to reconcile and transfer, particularly when many clash fields or group memberships changed at once. Transfer correctness takes priority over aggressive shortcuts while this path continues to be optimized.
 
 ## Compatibility
 
