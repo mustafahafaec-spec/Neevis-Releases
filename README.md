@@ -1,4 +1,4 @@
-# Neevis v1.10.0
+# Neevis v1.10.1
 
 **Neevis** is a productivity and coordination add-in for **Autodesk Navisworks Manage 2026 and 2027**.
 
@@ -105,7 +105,7 @@ It also supports **Operation Viewpoints** for transferring only the viewpoints c
 ### Stamper — ALPHA / Coming Soon
 An under-development clash review and stamping workflow.
 
-The tool remains visible for development tracking but is **not available for normal use in the v1.10.0 Public Release**.
+The tool remains visible for development tracking but is **not available for normal use in the v1.10.1 Public Release**.
 
 ### Reporter
 Creates configurable clash reports from Navisworks clash data.
@@ -114,7 +114,7 @@ You can control report fields, statuses, comments, grouping, filters, and report
 
 **Use it when:** you need a shareable clash report for coordination meetings, issue distribution, or project records.
 
-> **Coming Soon:** Reporter **Create View Points** and Reporter image export remain ALPHA and are not available for normal use in the v1.10.0 Public Release.
+> **Coming Soon:** Reporter image export remains ALPHA and is not available for normal use in the v1.10.1 Public Release.
 
 ---
 
@@ -246,6 +246,12 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 **BETA** features are available for use but are still under wider project validation.
 
 **ALPHA / Coming Soon** features are still under development and are not enabled for normal use in the Public Release.
+
+---
+
+# Known Issues
+
+- **Reeviz Portal:** Reading geometry from large or dense Navisworks federations can still take a significant amount of time. Geometry performance was further optimized in v1.10.1, but the issue remains listed until it is confirmed resolved in real project models.
 
 ---
 
