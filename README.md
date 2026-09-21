@@ -1,4 +1,4 @@
-# Neevis v1.10.1
+# Neevis v1.10.2
 
 **Neevis** is a productivity and coordination add-in for **Autodesk Navisworks Manage 2026 and 2027**.
 
@@ -105,7 +105,7 @@ It also supports **Operation Viewpoints** for transferring only the viewpoints c
 ### Stamper — ALPHA / Coming Soon
 An under-development clash review and stamping workflow.
 
-The tool remains visible for development tracking but is **not available for normal use in the v1.10.1 Public Release**.
+The tool remains visible for development tracking but is **not available for normal use in the v1.10.2 Public Release**.
 
 ### Reporter
 Creates configurable clash reports from Navisworks clash data.
@@ -114,7 +114,7 @@ You can control report fields, statuses, comments, grouping, filters, and report
 
 **Use it when:** you need a shareable clash report for coordination meetings, issue distribution, or project records.
 
-> **Coming Soon:** Reporter image export remains ALPHA and is not available for normal use in the v1.10.1 Public Release.
+> **Coming Soon:** Reporter image export remains ALPHA and is not available for normal use in the v1.10.2 Public Release.
 
 ---
 
@@ -139,7 +139,7 @@ The main tool lets you choose export content from the Selection Tree. Neevis Rig
 
 **Use it when:** you need to create an IFC from selected/federated Navisworks geometry.
 
-### Reeviz Portal
+### Portal
 Connects Neevis in Navisworks with **Reeviz in Revit**.
 
 Reeviz can send the active Revit Section Box to Neevis. Neevis identifies the intersecting Navisworks geometry and returns it for temporary transfer into Revit while excluding the originating Revit model.
@@ -251,7 +251,8 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 
 # Known Issues
 
-- **Reeviz Portal:** Reading geometry from large or dense Navisworks federations can still take a significant amount of time. Geometry performance was further optimized in v1.10.1, but the issue remains listed until it is confirmed resolved in real project models.
+- **Portal:** Reading geometry from large or dense Navisworks federations can still take a significant amount of time. v1.10.2 adds persistent local geometry caching and additional transfer-path optimizations, but large/dense federations may still require significant read time until confirmed on representative project models.
+- **Portal Switch Back:** Navisworks → Revit Switch Back has shown intermittent failures with an already-running Revit model during private testing. v1.10.2 adds session-channel and inbox fallback delivery, but the issue remains listed until runtime confirmation.
 
 ---
 
