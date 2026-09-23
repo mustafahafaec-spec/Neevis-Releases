@@ -1,4 +1,4 @@
-# Neevis v1.10.2
+# Neevis v1.10.3
 
 **Neevis** is a productivity and coordination add-in for **Autodesk Navisworks Manage 2026 and 2027**.
 
@@ -89,7 +89,7 @@ Analyzer provides:
 - Main Groups and Combo Groups
 - Clash recordings/history
 - Model isolation and review views
-- Report and selected-test export workflows
+- Report and selected-test export workflows, including NWD export with selectable target compatibility where supported
 
 Analyzer follows the active Workspace scope, including **Group Screen** and **Volume Screen** where applicable.
 
@@ -105,7 +105,7 @@ It also supports **Operation Viewpoints** for transferring only the viewpoints c
 ### Stamper — ALPHA / Coming Soon
 An under-development clash review and stamping workflow.
 
-The tool remains visible for development tracking but is **not available for normal use in the v1.10.2 Public Release**.
+The tool remains visible for development tracking but is **not available for normal use in the v1.10.3 Public Release**.
 
 ### Reporter
 Creates configurable clash reports from Navisworks clash data.
@@ -114,7 +114,7 @@ You can control report fields, statuses, comments, grouping, filters, and report
 
 **Use it when:** you need a shareable clash report for coordination meetings, issue distribution, or project records.
 
-> **Coming Soon:** Reporter image export remains ALPHA and is not available for normal use in the v1.10.2 Public Release.
+> **Coming Soon:** Reporter image export remains ALPHA and is not available for normal use in the v1.10.3 Public Release.
 
 ---
 
@@ -144,7 +144,7 @@ Connects Neevis in Navisworks with **Reeviz in Revit**.
 
 Reeviz can send the active Revit Section Box to Neevis. Neevis identifies the intersecting Navisworks geometry and returns it for temporary transfer into Revit while excluding the originating Revit model.
 
-The Portal supports source visibility controls, source colors, original Navisworks colors, and Section Box application for coordination checks.
+The Portal supports source visibility controls, source colors, original Navisworks colors, Section Box application, and direct model-session pairing with Reeviz. Pairing is tied to the open Revit/Navisworks models rather than the Portal windows, so either Portal can be closed and reopened without losing the active pair.
 
 **Use it when:** a Revit user needs surrounding federated Navisworks coordination geometry directly inside the current Revit view.
 
@@ -165,7 +165,7 @@ A Workspace is stored as a portable **`.nws`** file and can hold project coordin
 - Saved Viewpoint synchronization data
 - Shared coordination settings
 
-Workspace also provides verification tools that compare the current Navisworks model with the loaded Workspace and identify differences that need attention.
+Workspace also provides verification tools that compare the current Navisworks model with the loaded Workspace and identify differences that need attention. For an opened NWF, **Create Local NWF** can create a Documents copy with `_Local` appended to the file name while retaining the same Workspace assignment.
 
 ### Group Screen
 Group Screen limits Workspace-aware workflows to selected Workspace groups/items.
@@ -211,7 +211,7 @@ It supports reviewing, sorting, and managing loaded files, including removal/rep
 ## Neevis
 
 ### Hotkeys
-Assigns two-key shortcuts to Neevis tools and supported Navisworks commands.
+Assigns two-key shortcuts to Neevis tools and supported Navisworks commands. Assigned native commands are collected under **Native Navisworks Tool** with their original ribbon tab shown. The default native shortcuts include **Fit Selection = FF**, while **Switch Select Mode = SS** alternates the Home-tab Select and Select Box tools.
 
 **Use it when:** you want faster keyboard access to frequently used coordination commands.
 
@@ -251,8 +251,10 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 
 # Known Issues
 
-- **Portal:** Reading geometry from large or dense Navisworks federations can still take a significant amount of time. v1.10.2 adds persistent local geometry caching and additional transfer-path optimizations, but large/dense federations may still require significant read time until confirmed on representative project models.
-- **Portal Switch Back:** Navisworks → Revit Switch Back has shown intermittent failures with an already-running Revit model during private testing. v1.10.2 adds session-channel and inbox fallback delivery, but the issue remains listed until runtime confirmation.
+- **Portal:** Reading geometry from large or dense Navisworks federations can still take significant time. v1.10.3 retains local geometry caching and the optimized transfer path, but representative large-project runtime validation is still required.
+- **Portal Switch Back:** Navisworks → Revit Switch Back received additional session/worksharing handling during v1.10.3 development, but remains under observation until confirmed stable on representative central models.
+- **Clashes Data Transfer / Sync Data:** The import/apply path was optimized to skip unchanged native clash fields and batch host edits, but the developer previously reported intermittent long import times; large real-project datasets still require confirmation.
+- **Hotkeys / Switch Select Mode:** v1.10.3 now executes the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
 
 ---
 
