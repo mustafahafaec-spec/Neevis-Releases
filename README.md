@@ -1,4 +1,4 @@
-# Neevis v1.10.3
+# Neevis v1.10.5
 
 **Neevis** is a productivity and coordination add-in for **Autodesk Navisworks Manage 2026 and 2027**.
 
@@ -105,16 +105,16 @@ It also supports **Operation Viewpoints** for transferring only the viewpoints c
 ### Stamper — ALPHA / Coming Soon
 An under-development clash review and stamping workflow.
 
-The tool remains visible for development tracking but is **not available for normal use in the v1.10.3 Public Release**.
+The tool remains visible for development tracking but is **not available for normal use in the v1.10.5 Public Release**.
 
-### Reporter
+### Reporter — BETA
 Creates configurable clash reports from Navisworks clash data.
 
 You can control report fields, statuses, comments, grouping, filters, and report splitting.
 
 **Use it when:** you need a shareable clash report for coordination meetings, issue distribution, or project records.
 
-> **Coming Soon:** Reporter image export remains ALPHA and is not available for normal use in the v1.10.3 Public Release.
+> **BETA:** Reporter image export is available in the Public Release. Images are embedded directly in the exported HTML, and exported clash captures use a consistent Front-Right-Top orientation with clash-centered framing.
 
 ---
 
@@ -241,7 +241,7 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 | Search Set Builder | BETA |
 | Volume Screen | BETA |
 | Stamper | ALPHA / Coming Soon |
-| Reporter Images | ALPHA / Coming Soon |
+| Reporter Images | BETA |
 
 **BETA** features are available for use but are still under wider project validation.
 
@@ -251,10 +251,9 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 
 # Known Issues
 
-- **Portal:** Reading geometry from large or dense Navisworks federations can still take significant time. v1.10.3 retains local geometry caching and the optimized transfer path, but representative large-project runtime validation is still required.
-- **Portal Switch Back:** Navisworks → Revit Switch Back received additional session/worksharing handling during v1.10.3 development, but remains under observation until confirmed stable on representative central models.
+- **Portal Switch Back:** Navisworks → Revit Switch Back received additional session/worksharing handling during v1.10.5 development, but remains under observation until confirmed stable on representative central models.
 - **Clashes Data Transfer / Sync Data:** The import/apply path was optimized to skip unchanged native clash fields and batch host edits, but the developer previously reported intermittent long import times; large real-project datasets still require confirmation.
-- **Hotkeys / Switch Select Mode:** v1.10.3 now executes the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
+- **Hotkeys / Switch Select Mode:** v1.10.5 continues to execute the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
 
 ---
 
