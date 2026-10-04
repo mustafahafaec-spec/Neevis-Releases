@@ -1,4 +1,4 @@
-# Neevis v1.10.5
+# Neevis v1.10.6
 
 **Neevis** is a productivity and coordination add-in for **Autodesk Navisworks Manage 2026 and 2027**.
 
@@ -105,7 +105,7 @@ It also supports **Operation Viewpoints** for transferring only the viewpoints c
 ### Stamper — ALPHA / Coming Soon
 An under-development clash review and stamping workflow.
 
-The tool remains visible for development tracking but is **not available for normal use in the v1.10.5 Public Release**.
+The tool remains visible for development tracking but is **not available for normal use in the v1.10.6 Public Release**.
 
 ### Reporter — BETA
 Creates configurable clash reports from Navisworks clash data.
@@ -211,7 +211,7 @@ It supports reviewing, sorting, and managing loaded files, including removal/rep
 ## Neevis
 
 ### Hotkeys
-Assigns two-key shortcuts to Neevis tools and supported Navisworks commands. Assigned native commands are collected under **Native Navisworks Tool** with their original ribbon tab shown. The default native shortcuts include **Fit Selection = FF**, while **Switch Select Mode = SS** alternates the Home-tab Select and Select Box tools.
+Assigns two-key shortcuts to Neevis tools and supported Navisworks commands. Assigned native commands are collected under **Native Navisworks Tool** with their original ribbon tab shown. The default native shortcuts include **Zoom Extend = FF** and, while Sectioning is enabled, **Fit Selection = FS**, **Move = MS**, and **Rotate = RS**. **Switch Select Mode = SS** alternates the Home-tab Select and Select Box tools. Under Right Click Options, **Group Clashes = GG** by default.
 
 **Use it when:** you want faster keyboard access to frequently used coordination commands.
 
@@ -251,9 +251,9 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 
 # Known Issues
 
-- **Portal Switch Back:** Navisworks → Revit Switch Back received additional session/worksharing handling during v1.10.5 development, but remains under observation until confirmed stable on representative central models.
+- **Portal Switch Back:** Navisworks → Revit Switch Back remains under observation until confirmed stable on representative central models.
 - **Clashes Data Transfer / Sync Data:** The import/apply path was optimized to skip unchanged native clash fields and batch host edits, but the developer previously reported intermittent long import times; large real-project datasets still require confirmation.
-- **Hotkeys / Switch Select Mode:** v1.10.5 continues to execute the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
+- **Hotkeys / Switch Select Mode:** v1.10.6 continues to execute the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
 
 ---
 
