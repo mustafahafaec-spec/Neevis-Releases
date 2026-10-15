@@ -1,4 +1,4 @@
-# Neevis v1.10.6
+# Neevis v1.10.7
 
 **Neevis** is a productivity and coordination add-in for **Autodesk Navisworks Manage 2026 and 2027**.
 
@@ -105,7 +105,7 @@ It also supports **Operation Viewpoints** for transferring only the viewpoints c
 ### Stamper — ALPHA / Coming Soon
 An under-development clash review and stamping workflow.
 
-The tool remains visible for development tracking but is **not available for normal use in the v1.10.6 Public Release**.
+The tool remains visible for development tracking but is **not available for normal use in the v1.10.7 Public Release**.
 
 ### Reporter — BETA
 Creates configurable clash reports from Navisworks clash data.
@@ -165,7 +165,7 @@ A Workspace is stored as a portable **`.nws`** file and can hold project coordin
 - Saved Viewpoint synchronization data
 - Shared coordination settings
 
-Workspace also provides verification tools that compare the current Navisworks model with the loaded Workspace and identify differences that need attention. For an opened NWF, **Create Local NWF** can create a Documents copy with `_Local` appended to the file name while retaining the same Workspace assignment.
+Workspace also provides verification tools that compare the current Navisworks model with the loaded Workspace and identify differences that need attention. Desktop Connector cache files use their portable Autodesk cloud path identity, so the same ACCDocs, Autodesk Docs, or BIM 360 cache remains recognized when the Windows user or machine changes. For an opened NWF, **Create Local NWF** can create a Documents copy with `_Local` appended to the file name while retaining the same Workspace assignment.
 
 ### Group Screen
 Group Screen limits Workspace-aware workflows to selected Workspace groups/items.
@@ -186,9 +186,11 @@ Synchronizes supported information between the current verified Navisworks model
 
 It supports full synchronization and selected Main Group synchronization, depending on the workflow and data type.
 
+**Quick Sync** provides a lightweight clash-data path for day-to-day review updates. After at least one normal Sync has established the compact synchronization journal, Quick Sync transfers only precisely detected changed clash data in changed Clash Tests. It does not rerun/update Clash Tests, create Analyzer recordings, synchronize Clash Groups, or synchronize Saved Viewpoints. Its status workflow preserves Reviewed and Approved clashes, including Approved By, and transports an explicitly assigned True Clash state without treating a normal native New/Active result as an explicit True Clash.
+
 Supported synchronized data includes coordination information such as Clash Data, Clash Groups, and Saved Viewpoints where enabled.
 
-**Use it when:** project models need to exchange the latest Workspace coordination data.
+**Use it when:** project models need to exchange the latest Workspace coordination data. Use Quick Sync for small review-status/metadata deltas and normal Sync for the full synchronization lifecycle.
 
 ---
 
@@ -253,7 +255,7 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 
 - **Portal Switch Back:** Navisworks → Revit Switch Back remains under observation until confirmed stable on representative central models.
 - **Clashes Data Transfer / Sync Data:** The import/apply path was optimized to skip unchanged native clash fields and batch host edits, but the developer previously reported intermittent long import times; large real-project datasets still require confirmation.
-- **Hotkeys / Switch Select Mode:** v1.10.6 continues to execute the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
+- **Hotkeys / Switch Select Mode:** v1.10.7 continues to execute the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
 
 ---
 
