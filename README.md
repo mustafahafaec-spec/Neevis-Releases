@@ -1,4 +1,4 @@
-# Neevis v1.11.2
+# Neevis v1.11.3
 
 **Neevis** is a productivity and coordination add-in for **Autodesk Navisworks Manage 2026 and 2027**.
 
@@ -91,6 +91,8 @@ Analyzer provides:
 
 Analyzer follows the active Workspace scope, including **Group Screen** and **Volume Screen** where applicable.
 
+**Mini Mode:** Compact Analyzer views cycle between Clashes Summary, a five-column Clashes Table filtered by Priority Item, and Priority Items. Summary and table rows support group isolation and contextual clash actions. Mini Mode remembers the most recently selected Priority Item for the same model and Workspace on this computer; a missing or no-longer-priority item returns to the unselected prompt.
+
 **Use it when:** you want to understand clash status, priorities, trends, relationships between disciplines, or review a focused part of the coordination model.
 
 ### Viewpoint Manager
@@ -103,7 +105,7 @@ It also supports **Operation Viewpoints** for transferring only the viewpoints c
 ### Stamper — ALPHA / Coming Soon
 An under-development clash review and stamping workflow.
 
-The tool remains visible for development tracking but is **not available for normal use in the v1.11.2 Public Release**.
+The tool remains visible for development tracking but is **not available for normal use in the v1.11.3 Public Release**.
 
 ### Reporter — BETA
 Creates configurable clash reports from Navisworks clash data.
@@ -252,7 +254,7 @@ Provides common clash-view/capture appearance settings used by supported Neevis 
 
 - **Portal Switch Back:** Navisworks → Revit Switch Back remains under observation until confirmed stable on representative central models.
 - **Clashes Data Transfer / Sync Data:** The import/apply path was optimized to skip unchanged native clash fields and batch host edits, but the developer previously reported intermittent long import times; large real-project datasets still require confirmation.
-- **Hotkeys / Switch Select Mode:** v1.11.2 continues to execute the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
+- **Hotkeys / Switch Select Mode:** v1.11.3 continues to execute the exact parameterized native Select/Select Box ribbon item instead of resolving only by command ID. This release requires Navisworks host confirmation of the reported failure scenario.
 
 ---
 
